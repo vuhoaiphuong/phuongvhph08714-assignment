@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AddTableComponent implements OnInit {
   customer : Customer = new Customer();
+  showModal  :Boolean= false;
+
   constructor(
     private customerService: CustomerService,
     private router: Router
@@ -17,9 +19,12 @@ export class AddTableComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  addProduct(){
+  addCustomer(){
     this.customerService.addCustomer(this.customer).subscribe(data =>{
        this.router.navigateByUrl("/customer")
     } );
+  }
+  clickAdd(){
+    this.showModal = true;
   }
 }
